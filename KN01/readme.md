@@ -92,7 +92,12 @@ docker rm m347-nginx
 docker rmi ubuntu
 ```
 
- ![docker rmi ubuntu](../image/KN01_nginx_status.png)
+Das funktioniert nicht da der Container das referenzierte Image noch benutzt.
+ ![docker rmi conflict](../image/KN01_docker_rmi_conflict.png)
+ 
+ Mit dem `-f force` flag geht es dann
+ ![docker rmi ubuntu](../image/KN01_docker_rmi.png)
+
 
 Docker Tag 
 ```bash
@@ -103,4 +108,4 @@ docker tag
 ```bash
 docker push
 ```
- ![docker tag nginx](../image/KN01_nginx_status.png)
+ ![docker tag nginx](../image/KN01_docker_push.png)
