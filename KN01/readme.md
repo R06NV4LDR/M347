@@ -80,13 +80,13 @@ Alle Container
 docker stop m347-nginx
 ```
 
- ![docker stop m347-nginx](../image/KN01_.png)
+ ![docker stop m347-nginx](../image/KN01_docker_stop.png)
 
 ```bash
 docker rm m347-nginx
 ```
 
- ![docker rm m347-nginx](../image/KN01_.png)
+ ![docker rm m347-nginx](../image/KN01_docker_rm.png)
 
 ```bash
 docker rmi ubuntu
@@ -94,17 +94,20 @@ docker rmi ubuntu
 
 Das funktioniert nicht da der Container das referenzierte Image noch benutzt.
  ![docker rmi conflict](../image/KN01_docker_rmi_conflict.png)
- 
+
  Mit dem `-f force` flag geht es dann
  ![docker rmi ubuntu](../image/KN01_docker_rmi.png)
 
 
-Docker Tag 
+### Docker Tag 
+Mit Tag kann ein anderes Docker Image einem Repository hinzugefügt werden.
 ```bash
 docker tag
 ```
  ![docker tag nginx](../image/KN01_nginx_status.png)
 
+### Docker Push
+Mit Push werden die Tag
 ```bash
 docker push
 ```
