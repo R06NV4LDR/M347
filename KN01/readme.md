@@ -79,16 +79,19 @@ Alle Container
 ```bash
 docker stop m347-nginx
 ```
+
  ![docker stop m347-nginx](../image/KN01_.png)
 
 ```bash
 docker rm m347-nginx
 ```
+
  ![docker rm m347-nginx](../image/KN01_.png)
 
 ```bash
 docker rmi ubuntu
 ```
+
  ![docker rmi ubuntu](../image/KN01_nginx_status.png)
 
 Docker Tag 
