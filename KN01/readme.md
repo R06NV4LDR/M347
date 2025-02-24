@@ -12,7 +12,7 @@ Auf `Localhost` sollte folgende Seite erscheinen:
 
 Im Docker Desktop sehen wir den Container `nice_edison` welcher unser eben gepulltes Image darstellt. Daneben finden sich weitere Container für `Paperless-NGX`, `MariaDB` `Win98_inabox` oder `RetroArch` 
  ![Docker Desktop Containers](../image/KN01_docker_containers.png)
-
+[Notes](.)
 
 ## B)
 
