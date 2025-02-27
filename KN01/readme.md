@@ -1,6 +1,6 @@
-# KN01 
+# KN01: Docker Grundlagen
 
-## A) 
+## A) Installation
  Da Docker bereits installiert ist reicht die Prüfung der Version mit `docker --version`
  ![Docker Version](../image/KN01_docker_version.png)
 
@@ -14,7 +14,7 @@ Im Docker Desktop sehen wir den Container `nice_edison` welcher unser eben gepul
  ![Docker Desktop Containers](../image/KN01_docker_containers.png)
 [Notes](.)
 
-## B)
+## B) Docker Command Line Interface (CLI)
 
 ### Befehle
 1. **Docker Version**
@@ -100,14 +100,14 @@ Das funktioniert nicht da der Container das referenzierte Image noch benutzt.
 
 
 ### Docker Tag 
-Mit Tag kann ein anderes Docker Image einem Repository hinzugefügt werden.
+Mit Tag kann ein anderes Docker Image einem Repository hinzugefügt werden.  Ebenfalls kann damit eine Versionierung ähnlich der von `Git`
 ```bash
 docker tag
 ```
  ![docker tag nginx](../image/KN01_nginx_status.png)
 
 ### Docker Push
-Mit Push werden die Tag
+Mit Push werden die Tags ins Repository gepusht
 ```bash
 docker push
 ```
