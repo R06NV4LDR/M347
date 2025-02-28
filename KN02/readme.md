@@ -10,13 +10,27 @@ EXPOSE 	80	# Port 80 gets opened for the container. Actual mapping happens when 
 
 Abgaben:
 
-- [x] Dokumentiertes Dockerfile
+- [x] [Dokumentiertes Docker File](./KN02A/dockerfile)
 - [ ]  Dockerfile, welches mit den entsprechenden Zeilen wie oben beschrieben.
-- Notwendige Docker-Befehle für das build. Es ist einfacher für den nächsten Schritt, wenn Sie bereits den korrekt Tag für Dockerhub verwenden mit Benutzername, etc.
-- Notwendige Befehle für den Start des Containers und dem push in das private Repository (gemäss KN01)
-- Screenshot aus Docker Desktop, welcher das Image kn02a zeigt.
-- Screenshot der HTML-Seite, der die Seite helloworld.html zeigt, nachdem der Container gestartet wurde
 
+- [x] Notwendige Docker-Befehle für das build. Es ist einfacher für den nächsten Schritt, wenn Sie bereits den korrekt Tag für Dockerhub verwenden mit Benutzername, etc.
+
+```bash
+docker build -t r00n35/m347:kn02a .
+```
+- [x] Notwendige Befehle für den Start des Containers und dem push in das private Repository (gemäss KN01)
+```bash
+docker run -d -p 8081:80 --name kn02a_container r00n35/m347:kn02a
+```
+
+```bash
+docker push r00n35/m347:kn02a
+```
+
+- [x] Screenshot aus Docker Desktop, welcher das Image kn02a zeigt.
+![Docker Desktop kn02a](../image/KN02_dd_kn02a.png)
+- [x] Screenshot der HTML-Seite, der die Seite helloworld.html zeigt, nachdem der Container gestartet wurde
+![nginx helloworld](../image/KN02a_nginx.png)
 
 ## B) Dockerfile II
 
