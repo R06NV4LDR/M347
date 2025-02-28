@@ -41,7 +41,12 @@ Abgaben:
 - [ ] DB: Dockerfile für Ihren DB-Container
 [Dockerfile DB](./KN02B/DB/dockerfile.db)
 ## Docker Commands DB
+## Docker Commands DB
 - [ ] DB: docker build und docker run Befehle für Ihren DB-Container.
+```shell
+ docker build -f dockerfile.db -t r00n35/m347:kn02b-db .
+```
+
 ```shell
  docker build -f dockerfile.db -t r00n35/m347:kn02b-db .
 ```
@@ -53,13 +58,26 @@ docker run -d -p 3307:3306 --name kn02-db r00n35/m347:kn02b-db
 ```shell
 Test-NetConnection -ComputerName localhost -Port 3307
 ```
+
+```shell
+Test-NetConnection -ComputerName localhost -Port 3307
+```
 - Web:  Screenshots der beiden Seinfo.phpiten info.php und db.php
 ![info.php](../image/KN02b_info_php.png)
 ![db.php](../image/KN02b_db_php.png)
 
 - [Dockerfile für Web-Container](./KN02B/Web/dockerfile.web)
+- [Dockerfile für Web-Container](./KN02B/Web/dockerfile.web)
 
 - Web: docker build und docker run Befehle für Ihren Web-Container.
+```shell
+docker build -f dockerfile.web -t r00n35/m347:kn02b-web .
+```
+```shell
+docker run -d -p 8080:80 --name kn02b-web --link kn02b-db r00n35/m347:kn02b-web
+```
+- [Angepasste info.php](./KN02B/Web/info.php)
+- [Angepasste db.php](./KN02B/Web/db.php)
 ```shell
 docker build -f dockerfile.web -t r00n35/m347:kn02b-web .
 ```
