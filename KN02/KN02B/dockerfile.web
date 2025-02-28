@@ -1,4 +1,0 @@
-FROM php
-WORKDIR /var/www/html
-COPY index.php .
-EXPOSE 80

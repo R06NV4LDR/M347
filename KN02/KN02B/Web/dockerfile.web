@@ -1,0 +1,12 @@
+# Verwendet das offizielle PHP 8.0 Apache-Image als Basis
+FROM php:8.0-apache
+
+# Installieren des PHP-Moduls "mysqli" für die Kommunikation mit MariaDB/MySQL
+RUN docker-php-ext-install mysqli
+
+# Kopieren der PHP-Dateien in das Document-Root-Verzeichnis des Webservers
+COPY info.php /var/www/html/
+COPY db.php /var/www/html/
+
+# Exponieren des Ports 80 für den Webserver 
+EXPOSE 80

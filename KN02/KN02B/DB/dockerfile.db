@@ -1,0 +1,11 @@
+# Offizielles MariaDB-Image als Basis
+FROM mariadb:lts
+
+# Setzen der notwendigen Umgebungsvariablen als Teil eines neuen Layers
+ENV MYSQL_ROOT_PASSWORD=rootpassword
+ENV MYSQL_DATABASE=kn02b
+ENV MYSQL_USER=root
+ENV MYSQL_PASSWORD=rootpassword
+
+# Exponiert den Port 3306 für MySQL/MariaDB
+EXPOSE 3306

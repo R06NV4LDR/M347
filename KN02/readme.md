@@ -36,10 +36,20 @@ docker push r00n35/m347:kn02a
 
 Abgaben:
 
-- DB: telnet Befehl der zeigt, dass der Zugriff auf den DB Server funktioniert (Screenshot)
-- DB: Dockerfile für Ihren DB-Container
-- DB: docker build und docker run Befehle für Ihren DB-Container.
-- Web:  Screenshots der beiden Seiten info.php und db.php
+- [ ] DB: telnet Befehl der zeigt, dass der Zugriff auf den DB Server funktioniert (Screenshot)
+![TestConnection](../image/KN02b_db_telnet.png)
+- [ ] DB: Dockerfile für Ihren DB-Container
+[Dockerfile DB](./KN02B/DB/dockerfile.db)
+- [ ] DB: docker build und docker run Befehle für Ihren DB-Container.
+```shell
+docker run -d -p 3307:3306 --name kn02-db r00n35/m347:kn02b-db
+```
+- Web:  Screenshots der beiden Seinfo.phpiten info.php und db.php
+![info.php](../image/KN02b_info_php.png)
+![db.php](../image/KN02b_db_php.png)
+
 - Web: Dockerfile für Ihren Web-Container
+
 - Web: docker build und docker run Befehle für Ihren Web-Container.
+
 - Web: Angepasste PHP-Dateien
