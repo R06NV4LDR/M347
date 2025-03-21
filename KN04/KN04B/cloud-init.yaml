@@ -15,9 +15,6 @@ package_update: true
 package_upgrade: true
 groups:
   - docker
-system_info:
-  default_user:
-    groups: [docker]
 packages:
   - apt-transport-https
   - ca-certificates
@@ -28,9 +25,9 @@ packages:
 final_message: "The system is finally up, after $UPTIME seconds"
 write_files:
   - path: /home/ubuntu/docker-compose.yml
-    owner: ubuntu:ubuntu
     permissions: '0644'
     content: |
+      version: '3'
       services:
         db:
           container_name: m347-kn04a-db
@@ -39,8 +36,7 @@ write_files:
             MYSQL_ROOT_PASSWORD: root
           networks:
             kn04a-network:
-              ipv4_address: 172.10.5.11
-
+              ipv4_address: 172.20.5.11
         web:
           container_name: m347-kn04a-web
           build:
@@ -48,23 +44,21 @@ write_files:
             dockerfile: apache/dockerfile
           networks:
             kn04a-network:
-              ipv4_address: 172.10.5.10
+              ipv4_address: 172.20.5.10
           ports:
             - "80:80"
           depends_on:
             - db
-
       networks:
         kn04a-network:
           driver: bridge
           ipam:
             driver: default
             config:
-              - subnet: 172.10.0.0/16
-                ip_range: 172.10.5.0/24
-                gateway: 172.10.5.254
+              - subnet: 172.20.0.0/16
+                ip_range: 172.20.5.0/24
+                gateway: 172.20.5.254
   - path: /home/ubuntu/apache/db.php
-    owner: ubuntu:ubuntu
     permissions: '0644'
     content: |
       <?php
@@ -84,21 +78,17 @@ write_files:
           echo ("<li>" . $row["Host"] . " / " . $row["User"] . "</li>");
       }
   - path: /home/ubuntu/apache/info.php
-    owner: ubuntu:ubuntu
     permissions: '0644'
     content: |
       <?php
       phpinfo();
   - path: /home/ubuntu/apache/dockerfile
-    owner: ubuntu:ubuntu
     permissions: '0644'
     content: |
       FROM php:8.0-apache
-
       WORKDIR /var/www/html
       RUN docker-php-ext-install mysqli
       EXPOSE 80
-
       COPY apache/ .
 runcmd:
   - mkdir -p /etc/apt/keyrings
@@ -109,7 +99,7 @@ runcmd:
   - systemctl enable docker
   - systemctl start docker
   - usermod -aG docker ubuntu
-  - newgrp docker
   - chmod 777 /var/run/docker.sock
+  - chown -R ubuntu:ubuntu /home/ubuntu
   - cd /home/ubuntu
-  - docker-compose up -d
+  - docker compose up -d
