@@ -1,0 +1,19 @@
+# Dockerfile
+FROM php:8.1-apache
+
+# Beispiel, um die Warnung zu unterdrücken
+RUN echo "ServerName localhost" >> /etc/apache2/apache2.conf
+
+# Falls zusätzliche PHP-Extensions nötig sind, hier installieren
+RUN docker-php-ext-install mysqli
+
+# Beispiel: Kopieren unserer PHP-Dateien ins Document Root
+COPY info.php /var/www/html/
+COPY db.php /var/www/html/
+
+# Evtl. Apache-Konfiguration anpassen
+# RUN a2enmod rewrite
+RUN chown -R www-data:www-data /var/www/html
+
+EXPOSE 80
+CMD ["apache2-foreground"]
