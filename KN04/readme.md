@@ -4,16 +4,19 @@
 ### Teil a) Verwendung von Original Images
 
 
-![](../image/KN04-A-a_info.php.png)
+![info.php](../image/KN04-A-a_info.php.png)
 _Abbildung 1: Die beiden Container sind im selben Subnetz_
 
 
-![](../image/KN04-A-a_db.php.png)
+![db.php](../image/KN04-A-a_db.php.png)
+_Abbildung 2: Auf der Seite `db.php` finden wir erneut die Credentials des admin _
 
+### Files
 [docker-compose.yml](././KN04A/docker-compose.yml)
 
 
 [dockerfile.web](../KN04/KN04A/dockerfile)
+
 ## `docker compose up`
 Hier eine kurze Erklärung welche Einzelschritte der obige Befehl ausführt.
 

@@ -1,0 +1,31 @@
+
+services:
+  db:
+    container_name: m347-kn04b-db
+    image: r00n35/m347-kn02b-db
+    environment:
+      - MARIADB_ROOT_PASSWORD=rootpassword
+      - MARIADB_DATABASE=kn04a_b
+      - MARIADB_USER=root
+      - MARIADB_PASSWORD=rootpassword
+    networks:
+      m347_net:
+        ipv4_address: 172.20.5.10
+
+  web:
+    container_name: m347-kn04b-web
+    image: r00n35/m347-kn02b-web
+    ports:
+      - "80:80"
+    networks:
+      m347_net:
+        ipv4_address: 172.20.5.11
+
+networks:
+  m347_net:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.20.0.0/16
+          ip_range: 172.20.5.0/24
+          gateway: 172.20.5.254
