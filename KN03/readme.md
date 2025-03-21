@@ -56,13 +56,13 @@ ping busybox2
 Abgaben:
 
 - [ ] Screenshots der Befehle und deren Resultate. Achtung: Sie können Befehle zusammenfassen. Führen Sie die Befehle in einer sinnvollen Reihenfolge aus.
-![](../image/KN03_busybox1.png)
-![](../image/KN03_busybox2.png)
-![](../image/KN03_busybox3.png)
-![](../image/KN03_busybox4.png)
-![](../image/KN03_busybox5.png)
-![](../image/KN03_busybox6.png)
-![](../image/KN03_busybox7.png)
+![BusyBox1](../image/KN03_busybox1.png)
+![BusyBox2](../image/KN03_busybox2.png)
+![BusyBox](../image/KN03_busybox3.png)
+![BusyBox](../image/KN03_busybox4.png)
+![BusyBox](../image/KN03_busybox5.png)
+![BusyBox](../image/KN03_busybox6.png)
+![BusyBox](../image/KN03_busybox7.png)
 - [ ] Erklären Sie die Gemeinsamkeiten und Unterschiede. Wie kommen die Zustande und was ist Ihre Schlussfolgerung.
 
 

@@ -4,10 +4,10 @@ services:
     image: mariadb:latest
     container_name: m347-kn04a-db
     environment:
-      - MARIADB_ROOT_PASSWORD=pw123456
-      - MARIADB_DATABASE=mydb
-      - MARIADB_USER=admon
-      - MARIADB_PASSWORD=654321pw
+      - MARIADB_ROOT_PASSWORD=root
+      - MARIADB_DATABASE=mysql
+      - MARIADB_USER=admin
+      - MARIADB_PASSWORD=root
     networks:
       m347_net:
         ipv4_address: 172.10.5.10

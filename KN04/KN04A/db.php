@@ -1,8 +1,8 @@
 <?php
 $servername = "m347-kn04a-db";  // oder "172.10.5.10" je nach Compose-Einstellung
-$username = "admon";            // laut Environment in docker-compose
-$password = "654321pw";
-$dbname = "mydb";
+$username = "admin";            // laut Environment in docker-compose
+$password = "root";
+$database = "mysql";
 // Verbindung herstellen
 $conn = new mysqli($servername, $username, $password, $database);
 
