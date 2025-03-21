@@ -41,9 +41,20 @@ Baut das Image aus dem Dockerfile (wenn definiert)
 
 Abgaben:
 
+![info.php](../image/KN04-A-b_phpinfo()address.png)
+_Abbildung 3: Die beiden Container sind im selben Subnetz_
+![info.php](../image/KN04-A-b_phpinfo()address.png)
+_Abbildung 4: Hier erneut die `info.php` mit geänderten IP-Adressen_
+
+
+![db.php](../image/KN04-A-b_db.php.png)
+_Abbildung 5: Auf der Seite `db.php` finden wir diesmal eine Fehlermeldung _
+
+
 - [ ] Screenshots der beiden Seiten
-- [ ] Docker Compose Datei (yaml)
-- [ ] Erklärung wieso der Fehler auftritt
+[docker-compose.yml](../KN04/KN04A/b/docker-compose.yml)
+
+Der Fehler tritt auf, weil der im Dockerfile angegebene Containername nicht mit dem tatsächlichen Container-Namen übereinstimmt. Zur Behebung muss der Servername korrekt angepasst werden.
 
 ## B) Docker Compose: Cloud
 
