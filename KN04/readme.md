@@ -3,10 +3,8 @@
 ## A) Docker Compose: Lokal
 ### Teil a) Verwendung von Original Images
 
-
 ![info.php](../image/KN04-A-a_info.php.png)
 _Abbildung 1: Die beiden Container sind im selben Subnetz_
-
 
 ![db.php](../image/KN04-A-a_db.php.png)
 _Abbildung 2: Auf der Seite `db.php` finden wir erneut die Credentials des admin _
@@ -35,30 +33,27 @@ Baut das Image aus dem Dockerfile (wenn definiert)
 
 ### Teil b) Verwendung eigener Images
 
-- [ ] Rufen Sie die Seite info.php auf und erstellen Sie den Screenshot wieder mit den beiden IPs sichtbar.
-- [ ] Rufen Sie die Seite db.php auf (es wird ein Fehler geben!) und erstellen Sie den Screenshot.
-- [ ] Erklären Sie wieso Sie diesen Fehler sehen! Erklären Sie auch wie man dies lösen kann.
-
-Abgaben:
-
 ![info.php](../image/KN04-A-b_phpinfo()address.png)
-_Abbildung 3: Die beiden Container sind im selben Subnetz_
-![info.php](../image/KN04-A-b_phpinfo()address.png)
-_Abbildung 4: Hier erneut die `info.php` mit geänderten IP-Adressen_
+_Abbildung 3: Hier erneut die `info.php` mit geänderten IP-Adressen_
 
 
 ![db.php](../image/KN04-A-b_db.php.png)
-_Abbildung 5: Auf der Seite `db.php` finden wir diesmal eine Fehlermeldung _
+_Abbildung 4: Auf der Seite `db.php` finden wir diesmal eine Fehlermeldung _
 
-
-- [ ] Screenshots der beiden Seiten
 [docker-compose.yml](../KN04/KN04A/b/docker-compose.yml)
 
 Der Fehler tritt auf, weil der im Dockerfile angegebene Containername nicht mit dem tatsächlichen Container-Namen übereinstimmt. Zur Behebung muss der Servername korrekt angepasst werden.
 
+
+---
 ## B) Docker Compose: Cloud
 
-Abgaben
+![db.php in AWS](../image/KN04-B_db.php.png)
+_Abbildung 5: `db.php` in **AWS** gehostet_
 
-- [ ] Screenshots der aufgerufenen Seiten, inkl. sichtbarer URLs. Bei info.php sollen wieder die IPs sichtbar sein!
-- [ ] Cloud-Init Datei, die ja alle anderen Dateien enthalten sollte.
+![info.php in AWS](../image/KN04-B_info.php_mark.png)
+_Abbildung 6: `info.php` in **AWS** gehostet_
+
+
+### Files
+[KN04B Cloud-Init.yaml](./KN04B/cloud-init.yaml)
