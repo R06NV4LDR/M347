@@ -74,6 +74,54 @@ cat /data/shared.txt
 
 ## C) Speicher mit docker compose (30%)
 
+Zuerst benötigen wir ein [docker-compose.yml](./KN05C/docker-compose.yml) File dass zwei nginx-Container startet. Das erste verwendet alle drei **Mount-Typen**(bind mount, named volume, tmpfs)
+
+### Erklärung
+- **Named Volume:**
+Das Volume mydata wird im Top-Level unter volumes: deklariert und in beiden Containern unter /data gemountet.
+
+- **Bind Mount:**
+Im Service nginx1 wird ein lokales Verzeichnis ./binddata (relativ zum Speicherort der docker-compose.yml) als Bind Mount unter /bind eingebunden.
+(Stellen Sie sicher, dass das Verzeichnis binddata existiert.)
+
+- **tmpfs Mount:**
+Ebenfalls in nginx1 wird ein tmpfs Mount unter /tmpfs hinzugefügt.
+Tmpfs-Speicher ist flüchtig und wird nur im RAM gehalten.
+
+### Testen der Konfiguration
+
+Starten der Container mit:
+```bash
+docker-compose up -d
+```
+Befehl in Container 1 ausführen
+```bash
+docker exec -it nginx1 bash -c "mount"
+```
+_Dort sollten Einträge für:_
+
+_- Das `Named Volume` (/data)_
+
+_- Den `Bind Mount` (/bind)_
+
+_- Das `tmpfs` (/tmpfs) sichtbar sein._
+
+Befehl in Container 2 ausführen
+```bash
+docker exec -it nginx2 bash -c "mount"
+```
+
+In Container 1 eine Nachricht in die Datei schreiben und anzeigen:
+```bash
+docker exec -it container1 bash -c "echo 'Nachricht von Container 1' >> /data/shared.txt && cat /data/shared.txt"
+
+```
+In Container 2 eine weitere Nachricht anhängen und den Inhalt der Datei anzeigen:
+```bash
+docker exec -it container2 bash -c "echo 'Nachricht von Container 2' >> /data/shared.txt && cat /data/shared.txt"
+```
+
+![Speicher mit Docker Compose](../image/KN05C.png)
 
 Abgaben:
 
