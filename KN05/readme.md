@@ -8,8 +8,36 @@
 Sie werden im Folgenden die drei Speicherarten testen.
 
 ## A) Bind mounts (40%)
-Sie werden hier zeigen, dass Ihr Speicher von ihrem Host mit dem Container geteilt wird. In der Theorie haben Sie gelernt für welche Zwecke dieser Speicher nützlich sein kann. Sie simulieren den Fall, dass Sie eine Applikation programmieren und regelmässig Änderungen im Code vornehmen und auf dem Container testen müssen.
-Erstellen Sie ein Container (z.B. mit dem nginx Basis-Image) und fügen Sie ihm ein Bind Mount hinzu. Erstellen Sie jetzt ein Bash-Skript auf Ihrem Host-System (also wahrscheinlich in Ihrem Windows), welches eine einfache Ausgabe von Inhalt macht. Stellen Sie sicher, dass Ihr Code einzigartig ist und keine Kopie von Ihren Kollegen.  In Ihrem Container rufen Sie das Skript auf, so dass die Ausgabe angezeigt wird.  Ändern Sie das Skript nun in Ihrem Host-System und führen Sie es wieder auf dem Container aus. Die Änderungen sollten ebenfalls sichtbar sein.
+ Zuerst wechseln wir ins Verzeichnis wo das [Skript](../KN05/KN05A/scripts/scriptV1.sh) liegt und von wo aus der Befehl
+```bash
+docker run -d --name nginx-bind -v "C:\dev\workspace\TBZ\M347 - Docker\KN05\KN05A\scripts:/scripts" nginx
+```
+ausgeführt wird.
+Damit wird das Verzeichnis `scripts` im Container unter `/scripts` verfügbar gemacht.
+
+Dann mit 
+```bash
+docker exec -it nginx-bind bash -c "/scripts/scriptV1.sh"
+```
+das Script ausführen im Container. 
+Der Output sollte in diesem Falle so aussehen.
+```docker
+This is version 1.0 of my script
+
+Created by R/\B
+
+What's next:
+    Try Docker Debug for seamless, persistent debugging tools in any container or image → docker debug KN04A
+    Learn more at https://docs.docker.com/go/debug-cli/ 
+```
+
+Wenn das Script nun auf dem Host-System geändert wird, sollte nach erneutem ausführen von
+```bash
+docker exec -it nginx-bind bash -c "/scripts/scriptV1.sh"
+```
+
+![Output vor und nach Änderung](.././image/KN05A.png)
+
 
 Abgabe:
 
@@ -18,25 +46,34 @@ Abgabe:
 
 
 ## B) Volumes (30%)
-Sie werden hier zeigen, dass Ihre Container die gleichen Volumen verwenden können. Dies kann in einer Applikation notwendig sein.
-Erstellen Sie zwei Container (z.B. mit dem nginx Basis-Image) und fügen Sie beiden das gleiche Named Volume hinzu. Öffnen Sie die Konsolen beider Instanzen und schreiben von beiden Container in die gleiche Datei und lesen Sie die Inhalte auf der anderen Seite jeweils wieder aus.
-Sie können cat zum Lesen und echo mit Umleitung der Ausgabe in eine Datei (>>) zum Schreiben benutzen. Sie hatten die entsprechenden Befehle im Modul m122.
+Zuerst wird ein `Volume` erstellt dass von beiden `Containern` erreicht werden soll. 
+```bash
+docker volume create shared_data
+``` 
 
-Abgabe:
+Dann werden zwei Container gestartet mit den folgenden Befehlen:
+```bash
+docker run -d --name KN05_C1 -v shared_data:/data nginx
+docker run -d --name KN05_C2 -v shared_data:/data nginx
+```
 
-- Liste der Befehle die notwendig waren, um Container mit Volumen zu starten.
-- Erstellen Sie einen Screencast, der den beschriebenen Prozess zeigt. Testen Sie Ihn aber erst, bevor Sie den Screencast erstellen (Link in Grundlagen-Teil).
+Beide Container sollen in dieselbe Datei schreiben:
+In KN05_C1:
+```bash
+echo "Nachricht von Container 1" >> /data/shared.txt
+cat /data/shared.txt
+```
+In KN05_C2:
+```bash
+echo "Nachricht von Container 2" >> /data/shared.txt
+cat /data/shared.txt
+```
+
+- [] Erstellen Sie einen Screencast, der den beschriebenen Prozess zeigt. Testen Sie Ihn aber erst, bevor Sie den Screencast erstellen (Link in Grundlagen-Teil).
 
 
 ## C) Speicher mit docker compose (30%)
-Erstellen Sie ein Container mit docker compose und fügen Sie dem Container die drei verschiedenen Speichertypen (bind mount, named volume und tempfs) hinzu. Gehen Sie wie folgt vor:
 
-Erstellen sie ein Named Volume, indem Sie das entsprechende Top Level Element verwenden.
-Erstellen Sie zwei nginx-container.
-Fügen Sie das erstellte named volume dem ersten Container hinzu unter Verwendung der Long Syntax.
-Fügen Sie das erstellte named volume dem zweiten Container hinzu unter Verwendung der Short Syntax.
-Fügen Sie dem ersten Container ein bind mount hinzu.
-Fügen Sie dem ersten Container ein tmpfs mount hinzu.
 
 Abgaben:
 
