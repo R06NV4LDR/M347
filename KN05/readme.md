@@ -123,8 +123,6 @@ docker exec -it container2 bash -c "echo 'Nachricht von Container 2' >> /data/sh
 
 ![Speicher mit Docker Compose](../image/KN05C.png)
 
-Abgaben:
 
-- Auszug mit dem Befehl  mount im ersten Container, der zeigt, dass alle drei Speichertypen hinzugefügt wurden.
 - Auszug mit dem Befehl  mount im zweiten Container, der zeigt, dass der Speichertyp hinzugefügt wurde.
 docker compose Datei (yaml).
