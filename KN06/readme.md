@@ -8,6 +8,7 @@ TBZ: Sicherheitsaspekte
 
 
 ## A) Installation (50%)
+[cloud-init.yaml](./microk8s.yaml)
 Folgen Sie der Installationsanleitung für [MikroK8s auf AWS](https://gitlab.com/ch-tbz-it/Stud/m347/-/tree/main/Kubernetes/microk8s). Sie sollten nun einen Cluster mit drei Nodes haben.
 
 Abgaben:
