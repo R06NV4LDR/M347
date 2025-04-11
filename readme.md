@@ -11,8 +11,8 @@
 - [x] [KN02: Dockerfile](./KN02/readme.md)
 - [x] [KN03: Netzwerk, Sicherheit](./KN03/readme.md)
 - [x] [KN04: Docker Compose](./KN04/readme.md)
-- [] [KN05: Arbeit mit Speicher](./KN05/readme.md)
-- [] [KN06: Kubernetes I](./KN06/readme.md)
+- [x] [KN05: Arbeit mit Speicher](./KN05/readme.md)
+- [x] [KN06: Kubernetes I](./KN06/readme.md)
 - [] [KN07: Kubernetes II](./KN07/readme.md)
 - [] [KN08: Kubernetes III](./KN08/readme.md)
 

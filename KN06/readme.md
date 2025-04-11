@@ -55,10 +55,20 @@ Auf dem Master wird mit dem Befehl `microk8s remove-node 172.31.17.199` der Knot
 
 - Rufen Sie nochmals den Befehl `microk8s status` auf. Was ist der Unterschied und woher kommt dieser. Erstellen Sie einen Screenshot und einen Erklärungstext
 
+Der Unterschied besteht darin dass die High-Availability mit zwei Master-Nodes gewährleistet ist. Das bedeutet dass die Steuerungsebene auf zwei Master-Nodes ausgeführt wird. Somit läuft der Cluster weiter wenn einer der Master-Nodes ausfallen würde.
 
 - Rufen Sie nochmals `microk8s kubectl get nodes` auf, sowohl auf einem der Master als auch auf dem Worker. Dokumentieren Sie die Resultate mit Screenshots. Wieso stimmt dies überein  mit dem Result des Befehls microk8s status?
+
+![Worker Output](../image/KN06_B6.png)
 
 Abgaben:
 
 Erklären Sie den Unterschied zwischen den Befehlen microk8s und microk8s kubectl mit eigenen Worten.
 Gemäss den obenstehenden Schritten
+
+- `microk8s`
+Damit wird der gesamte MicroK8s-Dienst verwaltet. Befehle wie `microk8s status` geben eine Übersicht über den Zustand des MicroK8s-System, inklusive High-Availability, laufende Dienste und interne Clusterkonfiguration.
+
+
+- `microk8s kubectl`
+Das ist ein Wrappe um das Kubernetes-CLI `kubectl`. Er ist für die Interaktion mit dem Kubernetes-API-Server zuständig. Befehle wie `microk8s kubectl get nodes` fragen die Nodes direkt aus dem Cluster ab, wie sie von der API gemeldet werden
