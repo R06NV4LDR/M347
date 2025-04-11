@@ -2,6 +2,7 @@
 
 Grundlagen für diesen Auftrag:
 
+[Auftrag KN06: Kubernetes II]()
 [TBZ: Kubernetes Architektur]
 [TBZ: Kubernetes Tutorial]
 [TBZ: Demo Projekt]
