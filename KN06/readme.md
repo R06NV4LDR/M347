@@ -61,7 +61,7 @@ Der Unterschied besteht darin dass die High-Availability mit zwei Master-Nodes g
 
 ![Worker Output](../image/KN06_B6.png)
 
-Abgaben:
+**Abgaben:**
 
 Erklären Sie den Unterschied zwischen den Befehlen microk8s und microk8s kubectl mit eigenen Worten.
 Gemäss den obenstehenden Schritten
@@ -72,3 +72,5 @@ Damit wird der gesamte MicroK8s-Dienst verwaltet. Befehle wie `microk8s status` 
 
 - `microk8s kubectl`
 Das ist ein Wrappe um das Kubernetes-CLI `kubectl`. Er ist für die Interaktion mit dem Kubernetes-API-Server zuständig. Befehle wie `microk8s kubectl get nodes` fragen die Nodes direkt aus dem Cluster ab, wie sie von der API gemeldet werden
+
+[top](#kubernetes-i)
