@@ -13,12 +13,13 @@
 
 ## A) Begriffe und Konzepte erlernen (40%)
 Lesen Sie sich ein in die Begriffe und Konzepte im Tutorial.
+
 **Abgaben**
 
-Erklären Sie den Unterschied zwischen Pods und Replicas mit eigenen Worten.
-Erklären Sie den Unterschied zwischen Service und Deployment mit eigenen Worten.
-Welches Problem löst Ingress? Beantworten Sie die Frage in eigenen Worten.
-Für was ist ein statefulset? Beantworten Sie die Frage in eigenen Worten. Geben Sie ein mögliches Beispiel - aber keine Datenbank.
+- Erklären Sie den Unterschied zwischen Pods und Replicas mit eigenen Worten.
+- Erklären Sie den Unterschied zwischen Service und Deployment mit eigenen Worten.
+- Welches Problem löst Ingress? Beantworten Sie die Frage in eigenen Worten.
+- Für was ist ein statefulset? Beantworten Sie die Frage in eigenen Worten. Geben Sie ein mögliches Beispiel - aber keine Datenbank.
 
 
 ## B) Demo Projekt (60%)
