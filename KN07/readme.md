@@ -36,25 +36,56 @@ Erstellen Sie das Demo Projekt auf Ihrem eigenen Kubernetes Cluster (mit mind. 3
 
 **Abgaben und weitere Tasks**
 
-- Sie haben in Teil A Begrifflichkeiten erklärt und hier in Teil B ein Projekt durchgeführt. Sie haben einen Teil der Services nicht so umgesetzt wie in den Begrifflichkeiten/im Tutorial erklärt. Begründen Sie welcher Teil das ist und wieso? (Tipp: es geht um die Datenbank)
+### 1. Warum Service nicht wie im Tutorial
+
+#### _Begründen Sie, welcher Teil nicht wie im Tutorial umgesetzt wurde und wieso._
 
 
-- In der ConfigMap.yaml haben Sie die MongoUrl definiert, resp. sie war bereits definiert. Erklären Sie wieso der angegebene Wert korrekt ist.
+
+Der **MongoDB-Service** wurde als `ClusterIP` erstellt und **nicht nach nach aussen exposed** wie es das Tutorial vorsieht. Dies wurde absichtlich gemacht, um die Sicherheit zu erhöhen - **Datenbanken sollten nur intern im Cluster erreichbar sein.**
+
+### 2. Mongo-URL in `ConfigMap.yaml`
+
+ #### _"Erklären Sie, warum der angegebene Wert korrekt ist."_
+
+In der **ConfigMap** ist `mongo-url: mongo-service` gesetzt. Das ist korrekt, weil `mongo-service` der interne DNS-Name des MongoDB-Service ist. Dieser Name ist im Cluster über K8s DNS erreichbar und wird in der WebApp für den DB-Zugriff verwendet.
+
+### 3. Screenshot von `microk8s kubectl describe service webapp-service` auf zwei Nodes
+![Webapp-Service Master](../image/KN07_webapp-service_Master.png)
+_Webapp-Service Master_
+
+![Webapp-Service Node 1](../image/KN07_webapp-service.png)
+
+_Webapp-Service Node 1_
+![Webapp-Service Node2](../image/KN07_webapp-service2.png)
+_Webapp-Service Node 2_
+
+#### Unterschiede
+
+### 4. Gleicher Befehl für mongo-service auf einem Node + Unterschiede erklären
+
+![](../image/KN07_mongoService.png)
+- `Type: ClusterIP` => **Nicht von aussen erreichbar**
+- `Port: 27017/TCP` => Standard-Mongo-Port
+- `Endpoints:` zeigt korrekt den Mongo-Pod und Port `27017`
+- `Selector: app=mongo` => Verknüpfung zu den Mongo-Pods
+#### Unterschiede
+
+Der MongoDB-Service ist vom Typ ClusterIP und damit nur innerhalb des Clusters erreichbar. Das bedeutet, dass kein Zugriff von außen – z. B. mit MongoDB Compass – möglich ist. Dies ist aus Sicherheitsgründen sinnvoll, da Datenbanken in der Regel nicht direkt exponiert werden sollten.
+Die WebApp kann intern über mongo-service auf die Datenbank zugreifen, da Kubernetes-DNS den Namen korrekt auflöst.
+
+- `mongo-service` ist vom Typ `ClusterIP`, hat **keinen NodePort und keine externe IP.**
+
+- `webapp-service` ist vom Typ `NodePort`, hat einen **offenen Port (30100) und ist von aussen erreichbar.** 
 
 
-- Zeigen Sie, dass die App installiert wurde. rufen Sie den Befehl microk8s kubectl describe service webapp-service auf mindestens zwei Nodes auf und erstellen Sie Screenshots des Resultats.
+### 5. Zugriff über Web-Browser zeigen
+
+### 6. Verbindung zu MongoDB via Compass schlägt fehl - Erklärung warum
+
+### 7. Port ändern auf `32000` + Replicas erhöhen auf `3`
 
 
-- Rufen Sie nun den gleichen Befehl für den zweiten Service auf (nur auf einem der Nodes). Erstellen Sie einen Screenshot. Es gibt Unterschiede. Erklären Sie die Unterschiede in ein paar kurzen Sätzen.
-
-
-- Finden Sie heraus wie Sie die Webseite nun aufrufen können. Die Service-Konfiguration der Web-App sollte Auskunft geben. Erstellen Sie einen Screenshot der Seite, inkl. URL von mindestens zwei Nodes des Clusters und erklären Sie was Sie tun mussten.
-
-
-- Versuchen Sie sich mit der MongoDB zu verbinden, indem Sie von Ihrem Computer mit MongoDB Compass darauf zugreifen. Wieso geht es nicht? Begründen Sie was man im Service/Deployment ändern könnte, so dass es anschliessend geht?
-
-
-Ändern Sie nun eine Service Definition und exponieren Sie den Port 32000 anstatt 30100. Wenn Sie schon dabei sind erhöhen Sie die replicas auf 3. Erklären Sie welche Schritte Sie durchführen müssen und führen Sie sie auch durch. Erstellen Sie nochmals einen Screenshot (von einem Node) mit der funktionierenden Webseite. Erstellen Sie auch nochmals einen Screenshot des Befehls microk8s kubectl describe service webapp-service. Sehen Sie den Unterschied in den Replicas?
 
 
 ## Quellen
