@@ -1,4 +1,4 @@
-# Kubernetes I
+# KN06: Kubernetes I
 
 Grundlagen für diesen Auftrag:
 

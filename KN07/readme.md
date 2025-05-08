@@ -1,4 +1,4 @@
-# Kubernetes II
+# KN07: Kubernetes II
 - [KN07: Kubernetes II](#kubernetes-ii)
     - [A) Begriffe und Konzepte erlernen](#a-begriffe-und-konzepte-erlernen-40)
     - [B) Demo Projekt](#b-demo-projekt-60)
