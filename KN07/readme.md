@@ -16,11 +16,20 @@ Lesen Sie sich ein in die Begriffe und Konzepte im Tutorial.
 
 **Abgaben**
 
-- Erklären Sie den Unterschied zwischen Pods und Replicas mit eigenen Worten.
-- Erklären Sie den Unterschied zwischen Service und Deployment mit eigenen Worten.
-- Welches Problem löst Ingress? Beantworten Sie die Frage in eigenen Worten.
-- Für was ist ein statefulset? Beantworten Sie die Frage in eigenen Worten. Geben Sie ein mögliches Beispiel - aber keine Datenbank.
+### Unterschied zwischen Pods und Replicas
 
+Ein **Pod** ist die kleinste Ausführungseinheit in Kubernetes und enthält einen oder mehrere Container, die sich Ressourcen wie Netzwerk und Speicher teilen. Eine **Replica** hingegen bezeichnet, wie oft ein bestimmter Pod repliziert werden soll. Wenn ich z. B. 3 Replicas für einen Pod definiere, sorgt Kubernetes dafür, dass dieser Pod drei Mal gleichzeitig läuft – verteilt auf verschiedene Nodes, falls möglich – um Ausfallsicherheit und Lastverteilung zu erreichen.
+![Pods & Replicas](../image/PotsRecplica.webp)
+### Unterschied zwischen Service und Deployment
+
+Ein **Deployment** beschreibt den gewünschten Zustand einer Anwendung, z. B. wie viele Instanzen (Replicas) laufen sollen und welches Container-Image verwendet wird. Kubernetes sorgt dann automatisch dafür, dass dieser Zustand eingehalten wird. Ein **Service** wiederum ist eine abstrakte Schnittstelle, die den Zugriff auf die Pods erlaubt – unabhängig davon, auf welchem Node sie laufen oder wie oft sie repliziert wurden. Der Service balanciert die Anfragen automatisch auf die laufenden Pods.
+
+### Welches Problem löst Ingress?
+
+Ein **Ingress** löst das Problem, mehrere Services über einen einzigen Einstiegspunkt erreichbar zu machen – z. B. über eine einzige öffentliche IP-Adresse oder Domain. So kann ich z. B. über verschiedene Pfade oder Subdomains unterschiedliche Services erreichen, ohne jeden Service einzeln nach außen exposen zu müssen.
+### Für was ist ein statefulset?
+Ein **StatefulSet** ist dafür gedacht, Pods mit persistenter Identität zu verwalten. Es sorgt dafür, dass Pods immer mit derselben Netzwerkkennung und denselben Speicher-Ressourcen wiederhergestellt werden. Das ist besonders wichtig bei zustandsbehafteten Anwendungen wie z. B. Message Brokern oder Speicherlösungen.
+**Beispiel**: Eine Anwendung wie ein verteiltes Dateisystem (z. B. Ceph oder GlusterFS), bei dem jeder Node eine eindeutige Rolle und persistenten Speicher braucht.
 
 ## B) Demo Projekt (60%)
 Erstellen Sie das Demo Projekt auf Ihrem eigenen Kubernetes Cluster (mit mind. 3 nodes).
@@ -46,5 +55,10 @@ Erstellen Sie das Demo Projekt auf Ihrem eigenen Kubernetes Cluster (mit mind. 3
 
 
 Ändern Sie nun eine Service Definition und exponieren Sie den Port 32000 anstatt 30100. Wenn Sie schon dabei sind erhöhen Sie die replicas auf 3. Erklären Sie welche Schritte Sie durchführen müssen und führen Sie sie auch durch. Erstellen Sie nochmals einen Screenshot (von einem Node) mit der funktionierenden Webseite. Erstellen Sie auch nochmals einen Screenshot des Befehls microk8s kubectl describe service webapp-service. Sehen Sie den Unterschied in den Replicas?
+
+
+## Quellen
+- [Replica Sets Bild](https://theithollow.com/2019/01/28/kubernetes-replica-sets/)
+
 
 [top](#kubernetes-ii)
