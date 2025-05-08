@@ -34,13 +34,9 @@ Ein **StatefulSet** ist dafür gedacht, Pods mit persistenter Identität zu verw
 ## B) Demo Projekt (60%)
 Erstellen Sie das Demo Projekt auf Ihrem eigenen Kubernetes Cluster (mit mind. 3 nodes).
 
-**Abgaben und weitere Tasks**
-
 ### 1. Warum Service nicht wie im Tutorial
 
-#### _Begründen Sie, welcher Teil nicht wie im Tutorial umgesetzt wurde und wieso._
-
-
+#### _"Begründen Sie, welcher Teil nicht wie im Tutorial umgesetzt wurde und wieso."_
 
 Der **MongoDB-Service** wurde als `ClusterIP` erstellt und **nicht nach nach aussen exposed** wie es das Tutorial vorsieht. Dies wurde absichtlich gemacht, um die Sicherheit zu erhöhen - **Datenbanken sollten nur intern im Cluster erreichbar sein.**
 
@@ -64,15 +60,16 @@ _Webapp-Service Node 2_
 
 ### 4. Gleicher Befehl für mongo-service auf einem Node + Unterschiede erklären
 
-![](../image/KN07_mongoService.png)
+![Mongo-Service](../image/KN07_mongoService.png)
+
 - `Type: ClusterIP` => **Nicht von aussen erreichbar**
 - `Port: 27017/TCP` => Standard-Mongo-Port
 - `Endpoints:` zeigt korrekt den Mongo-Pod und Port `27017`
 - `Selector: app=mongo` => Verknüpfung zu den Mongo-Pods
-#### Unterschiede
 
-Der MongoDB-Service ist vom Typ ClusterIP und damit nur innerhalb des Clusters erreichbar. Das bedeutet, dass kein Zugriff von außen – z. B. mit MongoDB Compass – möglich ist. Dies ist aus Sicherheitsgründen sinnvoll, da Datenbanken in der Regel nicht direkt exponiert werden sollten.
-Die WebApp kann intern über mongo-service auf die Datenbank zugreifen, da Kubernetes-DNS den Namen korrekt auflöst.
+### Unterschiede
+
+
 
 - `mongo-service` ist vom Typ `ClusterIP`, hat **keinen NodePort und keine externe IP.**
 
@@ -80,12 +77,25 @@ Die WebApp kann intern über mongo-service auf die Datenbank zugreifen, da Kuber
 
 
 ### 5. Zugriff über Web-Browser zeigen
+![](../image/KN07_get%20all&webpage.png)
 
 ### 6. Verbindung zu MongoDB via Compass schlägt fehl - Erklärung warum
 
+Der MongoDB-Service ist vom Typ ClusterIP und damit nur innerhalb des Clusters erreichbar. Das bedeutet, dass kein Zugriff von außen – z. B. mit MongoDB Compass – möglich ist. Dies ist aus Sicherheitsgründen sinnvoll, da Datenbanken in der Regel nicht direkt exponiert werden sollten.
+Die WebApp kann intern über mongo-service auf die Datenbank zugreifen, da Kubernetes-DNS den Namen korrekt auflöst.
+
 ### 7. Port ändern auf `32000` + Replicas erhöhen auf `3`
 
+Der `webapp-service` wurde angepasst, um den NodePort von 30100 auf 32000 zu setzen.
+Zusätzlich wurde im Deployment die Anzahl Replicas auf `3` erhöht, um Lastverteilung und Hochverfügbarkeit zu demonstrieren.
 
+#### Screenshots
+![microk8s kubectl describe service webapp-service](../image/KN07%202025-05-08%20181852.png)
+_Ausgabe von `microk8s kubectl describe service webapp-service` zeigt NodePort 32000_
+![microk8s kubectl get pods -o wide](../image/KN07%202025-05-08%20181835.png)
+_Ausgabe von `microk8s kubectl get pods -o wide` zeigt 3 Pods auf 3 Nodes_
+![Browser Zugriff auf alle Nodes](../image/KN07%202025-05-08%20183639.png)
+_Browser Zugriff auf alle Nodes mit `http://<Node-IP>:32000`_
 
 
 ## Quellen
