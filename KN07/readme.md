@@ -27,6 +27,7 @@ Ein **Deployment** beschreibt den gewünschten Zustand einer Anwendung, z. B. 
 ### Welches Problem löst Ingress?
 
 Ein **Ingress** löst das Problem, mehrere Services über einen einzigen Einstiegspunkt erreichbar zu machen – z. B. über eine einzige öffentliche IP-Adresse oder Domain. So kann ich z. B. über verschiedene Pfade oder Subdomains unterschiedliche Services erreichen, ohne jeden Service einzeln nach außen exposen zu müssen.
+
 ### Für was ist ein statefulset?
 Ein **StatefulSet** ist dafür gedacht, Pods mit persistenter Identität zu verwalten. Es sorgt dafür, dass Pods immer mit derselben Netzwerkkennung und denselben Speicher-Ressourcen wiederhergestellt werden. Das ist besonders wichtig bei zustandsbehafteten Anwendungen wie z. B. Message Brokern oder Speicherlösungen.
 **Beispiel**: Eine Anwendung wie ein verteiltes Dateisystem (z. B. Ceph oder GlusterFS), bei dem jeder Node eine eindeutige Rolle und persistenten Speicher braucht.
@@ -102,4 +103,4 @@ _Browser Zugriff auf alle Nodes mit `http://<Node-IP>:32000`_
 - [Replica Sets Bild](https://theithollow.com/2019/01/28/kubernetes-replica-sets/)
 
 
-[top](#kubernetes-ii)
+[top](#kn07-kubernetes-ii)
