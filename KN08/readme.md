@@ -69,14 +69,14 @@ Nun Testen wir wie einfach es ist ein Update durchzuführen in Kubernetes. TDB
 ## 1 Datenbank erstellen
 Weitere Information finden Sie im Repo.
 
-2 FrontEnd Starten
+## 2 FrontEnd Starten
 Weitere Informationen finden Sie im Repo.
 
-3 Account Komponente Starten
+## 3 Account Komponente Starten
 Weitere Informationen finden Sie im Repo
 Schauen Sie sich die Endpoints in Swagger an. So sehen Sie auch welche Endpoints Sie selbst später aufrufen müssen.
 
-4/5 Integration der Microservices testen
+## 4/5 Integration der Microservices testen
 Starten Sie die Applikationen zuerst in Docker Desktop damit Sie sehen, dass die Applikationen auch wirklich starten. Achtung: Die Anforderungen an die URLs (via .env-Datei) sind unterschiedlich für Docker Desktop und Kubernetes. Sie werden das frontend zweimal builden müssen.
 
 6 SendRecieve und BuySell Implementieren
